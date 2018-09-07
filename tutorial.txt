@@ -1,0 +1,19 @@
+composer create-project symfony/skeleton my_project
+
+composer create-project symfony/website-skeleton my_project(이름)
+
+php bin/console server:start
+
+php bin/console debug:router
+
+
+template에서 html파일 만든다
+
+php bin/console make:controller(쉽게 만들수 있다.)
+
+composer require annotations(yaml에서 경로 지정안해줘도 된다.)
+
+<link rel="sytlesheet" href="{{asset('css/mystyle.css')}}"/>
+
+getbootstrap
+bootstrapcdn

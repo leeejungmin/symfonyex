@@ -1,0 +1,49 @@
+use Symfony\Component\Form\extension\Core\Type\TextType;
+use Symfony\Component\Form\extension\Core\Type\TextareaType;
+use Symfony\Component\Form\extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\extension\Core\Type\SubmitType;
+
+$todo = new Todo;
+$form = $this->createFromBuilder($todo)
+      ->add('name', TextType::class, array('attr' => array('class' => 'from-control','style'=> 'margin-bottom:15px)))
+      ->add('category', TextType::class, array('attr' => array('class' => 'from-control','style'=> 'margin-bottom:15px)))
+      ->add('discription', TextareaType::class, array('attr' => array('class' => 'from-control','style'=> 'margin-bottom:15px)))
+      ->add('priority', ChoiceType::class, array('choices' => array('low' => 'low','noraml'=>'normal', 'high'=>'high '),'style'=> 'margin-bottom:15px)))
+      ->add('due_date', DateTimeType::class, array('attr' => array('class' => 'fromcontrol','style'=> 'margin-bottom:15px)))
+      ->add('save', DateTimeType::class, array('laber' => 'Create Todo','attr' => array('class' => 'btn btn-primary','style'=> 'margin-bottom:15px)))
+      ->getForm();
+
+    $form->handleRequest($request);
+
+    if($form->isSubmitted() && $form->isValid()){
+       #die('SUBMITTED');
+       $name = $form['name']->getData();
+       $category = $form['category']->getData();
+       $description = $form['description']->getData();
+       $priority = $form['priority']->getData();
+       $due_date = $form['due_date']->getData();
+
+       $now = new\DateTime('now');
+
+       $todo->setName($name);
+       $todo->setCategory($Category);
+       $todo->setDescription($Description);
+       $todo->setPriority($Priority);
+       $todo->setDueDate($due_date);
+       $todo->setCreateDate($now);
+
+       $em = $this->getDoctrine()->getManager();
+
+       $em->persist($todo);
+       $em->addFlash();
+
+       $this->addFlash(
+            'notice',
+            'Todo Added'
+       );
+       return $this->redirectToRoute('todo_list');
+    }
+    return $this -> render('todo/create.html.twig', array(
+     'form'=>$form->createView()
+    ));

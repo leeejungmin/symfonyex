@@ -1,0 +1,40 @@
+{% extends 'base.html.twig'%}
+
+{% block body%}
+<h2 class="page-header">Jungmin Table</h2>
+<div class="bd-example">
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>LEE</td>
+      <td>JUNG</td>
+      <td>@MIN</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td><a href="/" class="btn btn-success"> @twitter</a>
+      <a href="/" class="btn btn-default"> @facebook</a>
+      <a href="/" class="btn btn-danger"> @google</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+{% endblock %}

@@ -1,0 +1,7 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+
+jung:
+  path: jung
+  controller: App\Controller\jung::number
